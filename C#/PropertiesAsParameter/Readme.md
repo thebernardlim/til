@@ -18,3 +18,7 @@ Properties are __not allowed to be passed as a 'ref' parameter__, as this proper
 Passing the property without a 'ref' type will mean nothing will be set for this property.
 
 One of the solutions I found was to use an **Action delegate**.
+
+References Used:
+- http://stackoverflow.com/questions/3587580/passing-properties-as-parameters
+
