@@ -1,0 +1,5 @@
+C:\Users\Bernard\Desktop\Personal\Projects\til\C#\PropertiesAsParameter\PropertiesAsParameter\bin\Debug\PropertiesAsParameter.exe.config
+C:\Users\Bernard\Desktop\Personal\Projects\til\C#\PropertiesAsParameter\PropertiesAsParameter\bin\Debug\PropertiesAsParameter.exe
+C:\Users\Bernard\Desktop\Personal\Projects\til\C#\PropertiesAsParameter\PropertiesAsParameter\bin\Debug\PropertiesAsParameter.pdb
+C:\Users\Bernard\Desktop\Personal\Projects\til\C#\PropertiesAsParameter\PropertiesAsParameter\obj\Debug\PropertiesAsParameter.exe
+C:\Users\Bernard\Desktop\Personal\Projects\til\C#\PropertiesAsParameter\PropertiesAsParameter\obj\Debug\PropertiesAsParameter.pdb
