@@ -13,6 +13,11 @@
 https://kb.sitecore.net/articles/087164
 - From experience, Sitecore 8.2 had issue with .NET framework 4.5.2 even though it should be compatible. However after upgrading to .NET 4.6, solution could be published successfully.
 
+3. "The template is used by at least one item" error when deleting template. If there are a lot of templates/ dependencies, what to do?
+- Serialize folder, remove through file explorer, then revert tree.
+
+
+
 
 
 
