@@ -1,0 +1,5 @@
+New-UsingBlock (New-Object Sitecore.Data.BulkUpdateContext) {
+    Get-Item -Path "master:/sitecore/Content/Home/FWDTH/save" | Remove-Item -recurse
+}
+
+This method is faster for bulk delete as it disables 

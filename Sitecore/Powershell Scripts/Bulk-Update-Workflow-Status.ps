@@ -1,0 +1,10 @@
+Get-ChildItem | ForEach-Object {
+    
+    Get-ChildItem | ForEach-Object {
+        $_.Editing.BeginEdit()
+        $_.Fields["__Workflow"].Value = "{DBA659DA-9CEE-4FD2-BC52-1FC664EAC800}";
+        $_.Fields["__Workflow state"].Value = "{5B130B04-E7F5-4996-9CE3-9170E288C9C7}";
+        $_.Editing.EndEdit()
+    }
+}
+
