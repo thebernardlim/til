@@ -66,3 +66,22 @@ Component Properties
 - Data Source
 - Data Source Templates
 - Parameters
+
+Difference GetDescendants() vs GetChildren()
+https://varunvns.wordpress.com/2011/08/04/differences-between-getchildren-and-getdescendants-methods/
+GetChildren() :
+1. This method can be accessed as follows:   itemObject.GetChildren();
+
+2. Returns all the direct children of an item –i.e. All the items present at level 1 under the item.
+
+3. If you need all the children, you need to recursively call GetChildren() method, for all the items under a specific item. — This surely gonna consume more time!
+
+(Also, the same result as GetChildren can be found using some XPath query too, but not here… As this is simply differentiating between GetChildren and GetDescendants.)
+
+GetDescendants()
+1. This method can be accessed as follows:   itemObject.Axes.GetDescendants();
+
+2. Returns all the items under an item.
+
+3. If you want all the children, just one go.. Call  GetDescendants() method and you have them all…! No recursive calls! 🙂 — So that’s where this method seems good! 😉
+
