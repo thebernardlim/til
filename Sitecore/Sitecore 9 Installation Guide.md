@@ -1,16 +1,16 @@
 # Pre-requisite Software
 
-- --Powershell
-- --Solr 6.6.1
-- --SQL Server 2016
-- --
-- --Java JRE. Add JAVA\_HOME environment variable to point to the respective Java JRE folder.&#39;keytool&#39; under bin as a system environment variable for &#39;PATH&#39;
-- --WebAdministration module (Comes with IIS)
-- --WebDeploy 3.6 for Hosting Servers
-- --URL Rewrite 2.1
-- --Microsoft SQL Server Data-Tier Application Framework (DacFx)
-- --Solr 6.6.1
-- --SQL Server 2016
+- Powershell
+- Solr 6.6.1
+- SQL Server 2016
+
+- Java JRE. Add JAVA\_HOME environment variable to point to the respective Java JRE folder.&#39;keytool&#39; under bin as a system environment variable for &#39;PATH&#39;
+- WebAdministration module (Comes with IIS)
+- WebDeploy 3.6 for Hosting Servers
+- URL Rewrite 2.1
+- Microsoft SQL Server Data-Tier Application Framework (DacFx)
+- Solr 6.6.1
+- SQL Server 2016
 
 # Sitecore 9 Prerequisite Software Installation Steps
 
@@ -30,20 +30,19 @@ Download Source: [https://www.microsoft.com/web/downloads/platform.aspx](https:/
 
 Run the following command in SQL Server Management Studio:
 
+~~~~
 sp\_configure&#39;contained database authentication&#39;, 1;
-
 GO
-
 RECONFIGURE;
-
 GO
+~~~~
 
 ## Install SIF Prerequisites
 
 Install through Web Platform Installer:
 
-- --Web Deploy 3.6 for Hosting Servers
-- --URL Rewrite 2.1
+- Web Deploy 3.6 for Hosting Servers
+- URL Rewrite 2.1
 
 Microsoft SQL Server Data-Tier Application Framework (DacFx) version 2016
 Download source: [https://www.microsoft.com/en-us/download/details.aspx?id=53013](https://www.microsoft.com/en-us/download/details.aspx?id=53013)
@@ -51,16 +50,16 @@ Download source: [https://www.microsoft.com/en-us/download/details.aspx?id=53013
 ## Install SIF (Sitecore Installation Framework)
 
 1. Register Powershell NuGet repository
-Register-PSRepository-NameSitecoreGallery-SourceLocation [https://sitecore.myget.org/F/sc-powershell/api/v2](https://sitecore.myget.org/F/sc-powershell/api/v2)
+`Register-PSRepository-NameSitecoreGallery-SourceLocation [https://sitecore.myget.org/F/sc-powershell/api/v2](https://sitecore.myget.org/F/sc-powershell/api/v2)`
 
 2. Register repository as &#39;trusted&#39;
-Set-PSRepository-NameSitecoreGallery-InstallationPolicyTrusted
+`Set-PSRepository-NameSitecoreGallery-InstallationPolicyTrusted`
 
-1. Install &#39;Sitecore Install Framework&#39; module
-Install-Module-NameSitecoreInstallFramework-RepositorySitecoreGallery
+3. Install &#39;Sitecore Install Framework&#39; module
+`Install-Module-NameSitecoreInstallFramework-RepositorySitecoreGallery`
 
-2. Update &#39;Sitecore Install Framework&#39; module
-Update-ModuleSitecoreInstallFramework
+4. Update &#39;Sitecore Install Framework&#39; module
+`Update-ModuleSitecoreInstallFramework`
 
 ## Install Solr
 
@@ -83,16 +82,14 @@ It is a powershell script that will automatically generate a self-signed cert fo
 
 Script can be found saved as: solr-ssl.ps1
 
-Command to run: ./solr-ssl.ps1 -KeystoreFile  C:\solr\solr-6.6.2\server\etc\solr-ssl.keystore.jks
+Command to run: `./solr-ssl.ps1 -KeystoreFile  C:\solr\solr-6.6.2\server\etc\solr-ssl.keystore.jks`
 Replace the last parameter with your respective Solr installation directory path and preferred keystore name. Point to &#39;etc&#39; subfolder inside this directory.
 
 If your Powershell is not setup to run scripts, this error will appear:
 
-cannot be loaded because running scripts is disabled on this
+"cannot be loaded because running scripts is disabled on this system"
 
-system
-
-Run Set-ExecutionPolicy RemoteSigned to enable this.
+Run `Set-ExecutionPolicy RemoteSigned` to enable this.
 
 keytool.exe not on path. Enter path to keytool (found in JRE bin folder):
 
@@ -105,7 +102,7 @@ Once finished running, verify that the solr-ssl.keystore.jks or your preferred k
 To generate the .p12 certificate from the generated keystore.
 
 Enter the following command:
-&quot;C:\Program Files (x86)\Java\jre1.8.0\_144\bin\keytool.exe&quot; -importkeystore -srckeystore solr-ssl.keystore.jks -destkeystore solr-ssl.keystore.p12 -srcstoretype jks -deststoretype pkcs12
+`&quot;C:\Program Files (x86)\Java\jre1.8.0\_144\bin\keytool.exe&quot; -importkeystore -srckeystore solr-ssl.keystore.jks -destkeystore solr-ssl.keystore.p12 -srcstoretype jks -deststoretype pkcs12`
 
 Source/Destination keystore password should be the one specified under your script&#39;s $KeystorePassword variable.
 
@@ -159,15 +156,15 @@ URL for Sitecore 9 Update 1 files:
 
 Files to download
 
-- --Packages for XP Single under &#39;Download options for On Premises deployment&#39; sub section
+- Packages for XP Single under &#39;Download options for On Premises deployment&#39; sub section
 
 Files Required
 
 Unpack the &#39;Sitecore 9.0.1 rev. 171219 (WDP XP0 packages)&#39; zip file that is the downloaded file above to get another 3 zip files.
 
-- --Sitecore 9.0.1 rev. 171219 (OnPrem)\_single.scwdp
-- --Sitecore 9.0.1 rev. 171219 (OnPrem)\_xp0xconnect.scwdp
-- --XP0 Configuration files 9.0.1 rev. 171219.zip (Unzip this file)
+- Sitecore 9.0.1 rev. 171219 (OnPrem)\_single.scwdp
+- Sitecore 9.0.1 rev. 171219 (OnPrem)\_xp0xconnect.scwdp
+- XP0 Configuration files 9.0.1 rev. 171219.zip (Unzip this file)
 
 Place all these files along with License.xml in a folder. Folder should look like this before installation starts.
 
@@ -178,26 +175,18 @@ Place all these files along with License.xml in a folder. Folder should look lik
 Save the following Powershell script that we will be using for Sitecore Installation.
 (Script can be copied directly from the official Sitecore 9 Installation PDF as well)
 
+~~~~
 #define parameters
 
 $prefix=&quot;prefixforyourwebsite&quot;
-
 $PSScriptRoot=&quot;Full path to the folder created above&quot;
-
 $XConnectCollectionService=&quot;$prefix.xconnect&quot;
-
 $sitecoreSiteName=&quot;$prefix.local&quot;
-
 $SolrUrl=&quot;https://localhost:89834/solr&quot;
-
 $SolrRoot=&quot;C:\solr-6.6.12&quot;
-
 $SolrService=&quot;solr6.6.1\_ssl&quot;
-
 $SqlServer=&quot;sqlservername&quot;
-
 $SqlAdminUser=&quot;sqlserveradminacct&quot;
-
 $SqlAdminPassword=&quot;sqlserverpassword&quot;
 
 #install client certificate for xconnect
@@ -207,7 +196,6 @@ $certParams=
 @{
 
     Path =&quot;$PSScriptRoot\xconnect-createcert.json&quot;
-
     CertificateName =&quot;$prefix.xconnect\_client&quot;
 
 }
@@ -217,19 +205,12 @@ Install-SitecoreConfiguration@certParams-Verbose
 #install solr cores for xdb
 
 $solrParams=
-
 @{
-
     Path =&quot;$PSScriptRoot\xconnect-solr.json&quot;
-
     SolrUrl =$SolrUrl
-
     SolrRoot =$SolrRoot
-
     SolrService =$SolrService
-
     CorePrefix =$prefix
-
 }
 
 Install-SitecoreConfiguration@solrParams-Verbose
@@ -239,29 +220,17 @@ Install-SitecoreConfiguration@solrParams-Verbose
 $xconnectParams=
 
 @{
-
     Path =&quot;$PSScriptRoot\xconnect-xp0.json&quot;
-
     Package =&quot;$PSScriptRoot\Sitecore 9.0.1 rev. 171219 (OnPrem)\_xp0xconnect.scwdp.zip&quot;
-
     LicenseFile =&quot;$PSScriptRoot\license.xml&quot;
-
     Sitename =$XConnectCollectionService
-
     XConnectCert =$certParams.CertificateName
-
     SqlDbPrefix =$prefix
-
     SqlServer =$SqlServer
-
     SqlAdminUser =$SqlAdminUser
-
     SqlAdminPassword =$SqlAdminPassword
-
     SolrCorePrefix =$prefix
-
     SolrURL =$SolrUrl
-
 }
 
 Install-SitecoreConfiguration@xconnectParams-Verbose
@@ -271,17 +240,11 @@ Install-SitecoreConfiguration@xconnectParams-Verbose
 $solrParams=
 
 @{
-
     Path =&quot;$PSScriptRoot\sitecore-solr.json&quot;
-
     SolrUrl =$SolrUrl
-
     SolrRoot =$SolrRoot
-
     SolrService =$SolrService
-
     CorePrefix =$prefix
-
 }
 
 Install-SitecoreConfiguration@solrParams-Verbose
@@ -291,34 +254,23 @@ Install-SitecoreConfiguration@solrParams-Verbose
 $sitecoreParams=
 
 @{
-
     Path =&quot;$PSScriptRoot\sitecore-XP0.json&quot;
-
     Package =&quot;$PSScriptRoot\Sitecore 9.0.1 rev. 171219 (OnPrem)\_single.scwdp.zip&quot;
-
     LicenseFile =&quot;$PSScriptRoot\license.xml&quot;
-
     SqlDbPrefix =$prefix
-
     SqlServer =$SqlServer
-
     SqlAdminUser =$SqlAdminUser
-
     SqlAdminPassword =$SqlAdminPassword
-
     SolrCorePrefix =$prefix
-
     SolrUrl =$SolrUrl
-
     XConnectCert =$certParams.CertificateName
-
     Sitename =$sitecoreSiteName
-
     XConnectCollectionService =&quot;https://$XConnectCollectionService&quot;
-
 }
 
 Install-SitecoreConfiguration@sitecoreParams-Verbose
+	
+~~~~
 
 1. Edit the &#39;#define parameters&#39; section to match your local environment values.
 2. Run the above powershell script to start installation process.
