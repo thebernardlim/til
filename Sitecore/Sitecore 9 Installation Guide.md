@@ -3,7 +3,6 @@
 - Powershell
 - Solr 6.6.1
 - SQL Server 2016
-
 - Java JRE. Add JAVA\_HOME environment variable to point to the respective Java JRE folder.&#39;keytool&#39; under bin as a system environment variable for &#39;PATH&#39;
 - WebAdministration module (Comes with IIS)
 - WebDeploy 3.6 for Hosting Servers
@@ -282,6 +281,12 @@ Install-SitecoreConfiguration@sitecoreParams-Verbose
 
 Set the value of $SqlServerwith the following syntax: &quot;localhost\{SQL Instance Name}&quot; rather than with just the Ensure that your SQL Server has mixed authentication enabled, to allow for SQL Server Authentication connections. Also ensure that login user has Login enabled.
 
+## “There are errors” in Experience Analytics
+
+Ensure that any certificate-related connection string under ConnectionStrings.config has the correct certificate thumbprint value for ‘FindValue’ attribute.
+To get the correct certificate thumbprint value, go to IIS. Click on ‘Server Certificates’.
+Choose the respective client certificate (would probably be named as ‘prefix’.xconnect_client), choose ‘Details’ tab. Check the value of the ‘Thumbprint’ attribute. This should match the ‘FindValue’ attributes above.
+If already matches, also ensure that ‘XConnect’ instance & XConnect App Pool is running.
 
 
 
