@@ -66,3 +66,18 @@ Component Properties
 - Data Source
 - Data Source Templates
 - Parameters
+
+Search
+https://soen.ghost.io/a-re-introduction-to-the-contentsearch-api-in-sitecore-part-1/
+
+Installing Packages - Merge Options
+Reference: http://www.partech.nl/nl/blog/2012/11/sitecore-package-installation-options-explained
+Overwrite :	Items with the same ID (along with it's descendants) will be removed and replaced by items from the package. 
+Skip :	Items with the same ID from the target database will remain unchanged; the item from the package will be skipped.
+Merge - Clear :	all existing versions for a language of the item being installed are removed prior to adding new versions. This options 'clears out' the versions of the language and creates one new version.
+Merge - Append :	item versions from the package are added 'on-top' of the existing versions of the item. This preserves history, but numbers the package versions with numbers higher than the existing version numbers. A user can merge information between versions afterwards.
+Merge - Merge :	if there is a version with the same number in the item, the Installation Wizard will overwrite it, otherwise a new version with the specific number is added. This makes it possible to replace specific versions of items.
+
+
+
+
