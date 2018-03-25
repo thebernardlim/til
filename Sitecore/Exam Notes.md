@@ -67,17 +67,21 @@ Component Properties
 - Data Source Templates
 - Parameters
 
-Search
-https://soen.ghost.io/a-re-introduction-to-the-contentsearch-api-in-sitecore-part-1/
+Difference GetDescendants() vs GetChildren()
+https://varunvns.wordpress.com/2011/08/04/differences-between-getchildren-and-getdescendants-methods/
+GetChildren() :
+1. This method can be accessed as follows:   itemObject.GetChildren();
 
-Installing Packages - Merge Options
-Reference: http://www.partech.nl/nl/blog/2012/11/sitecore-package-installation-options-explained
-Overwrite :	Items with the same ID (along with it's descendants) will be removed and replaced by items from the package. 
-Skip :	Items with the same ID from the target database will remain unchanged; the item from the package will be skipped.
-Merge - Clear :	all existing versions for a language of the item being installed are removed prior to adding new versions. This options 'clears out' the versions of the language and creates one new version.
-Merge - Append :	item versions from the package are added 'on-top' of the existing versions of the item. This preserves history, but numbers the package versions with numbers higher than the existing version numbers. A user can merge information between versions afterwards.
-Merge - Merge :	if there is a version with the same number in the item, the Installation Wizard will overwrite it, otherwise a new version with the specific number is added. This makes it possible to replace specific versions of items.
+2. Returns all the direct children of an item –i.e. All the items present at level 1 under the item.
 
+3. If you need all the children, you need to recursively call GetChildren() method, for all the items under a specific item. — This surely gonna consume more time!
 
+(Also, the same result as GetChildren can be found using some XPath query too, but not here… As this is simply differentiating between GetChildren and GetDescendants.)
 
+GetDescendants()
+1. This method can be accessed as follows:   itemObject.Axes.GetDescendants();
+
+2. Returns all the items under an item.
+
+3. If you want all the children, just one go.. Call  GetDescendants() method and you have them all…! No recursive calls! 🙂 — So that’s where this method seems good! 😉
 
