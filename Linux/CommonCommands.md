@@ -1,0 +1,1 @@
+* Check disk space: <pre>df</pre>
