@@ -1,0 +1,49 @@
+###Update Content Items based on a specific TemplateID and where current Workflow status is empty
+
+$script:templateIDsWithDefaultWorkflow = New-Object System.Collections.ArrayList
+
+$props = @{
+        ActionData = @{ WorkflowID = $workflowItem.ID; WorkflowStateID = $workflowStateItem.ID }
+        Title = $windowTitle
+        InfoTitle ="List of content items matching the templates that use the workflow: $($workflowItem.Name)."
+        InfoDescription = "Step 3 -  In order to update the workflow and workflow state fields either click the 'Update workflow for all items' action or manually select the items you wish to update and click the 'Update Workflow for selected items' action in the ribbon."
+        PageSize = 25
+        ViewName = "ContentItemsWithMissingWorkflow"
+    }
+
+function GetItemsWithoutWorkflowState()
+{
+    return Get-ChildItem -Path master:/sitecore/content/Home/ProjectA -Language * `
+            -Recurse | `
+            Where-Object {  
+                            ($_."__Workflow state" -eq "") -and 
+                            ( ($_."TemplateID" -eq "{2832F0F6-6342-4394-932C-2DDAB1164C97}")) } 
+}
+
+function AssignStateToItems($affectedItems)
+{
+    $updateCount = 0
+    foreach ($item in  $affectedItems){
+        Write-Host "Item Name: " $item.ItemPath " Language: " $item.Language
+        SetWorkflowState($item)
+        $updateCount++
+        Write-Host "Done updating " $item.ItemPath
+    }
+    
+    Write-Host "Total Items updated: " $updateCount
+}
+
+function SetWorkflowState([Sitecore.Data.Items.Item]$contentItem)
+{
+    $contentItem."__Workflow state" = "{12A103A1-E7A1-444C-A61B-5DD4D6A1381A}"
+    $script:itemCount++
+    Write-Host " -" $contentItem.Name $contentItem.ID
+}
+
+$itemsWithoutWorkflow = GetItemsWithoutWorkflowState
+if ($itemsWithoutWorkflow.Count -eq 0) {
+    Write-Host "No items without Workflow State"
+}
+else {
+    AssignStateToItems -affectedItems $itemsWithoutWorkflow
+}
