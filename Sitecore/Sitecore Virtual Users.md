@@ -36,8 +36,7 @@ Sitecore.Security.Authentication.AuthenticationManager.LoginVirtualUser(Sitecore
 Sitecore.Security.Accounts.User user = Sitecore.Security.Authentication.AuthenticationManager.GetActiveUser();
 ```
 
-** Do note that 'Sitecore.Security.Authentication.AuthenticationManager.LoginVirtualUser(Sitecore.Context.User);' is required as without this line, it failed in Sitecore v9.0, but worked in Sitecore 8. Without this, custom properties will disappear.
-
+** Do note that 'Sitecore.Security.Authentication.AuthenticationManager.LoginVirtualUser(Sitecore.Context.User);' is required as without this line, it failed in Sitecore v9.0, but worked in Sitecore 8. Without this, custom properties will disappear. However this line will not work in Sitecore 8.
 ** Especially during redirection
 
 ## Verifying if a user is a virtual user and authenticated
