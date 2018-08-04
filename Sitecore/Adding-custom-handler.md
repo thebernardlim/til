@@ -4,7 +4,7 @@
 
 	\<customHandlers>
 				
-	\<handler trigger="/~/tenantportal/formhandler" handler="FormHandler.ashx" />
+	\<handler trigger="/~/mysubsite/formhandler" handler="FormHandler.ashx" />
 		
 	\</customHandlers>
 
@@ -13,7 +13,7 @@ Add record under \<handlers>:
 
 	\<handlers>
 	
-	\<add verb="*" path="FormHandler.ashx" type="SwireTenantPortal.xsl.tenantportal.FormHandler" name="FormHandler"/>  
+	\<add verb="*" path="FormHandler.ashx" type="MySite.xsl.mysubsite.FormHandler" name="FormHandler"/>  
 
 	\</handlers>
 
