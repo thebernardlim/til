@@ -1,0 +1,19 @@
+Azure CLI
+
+- Login
+az login
+
+- Return only specific field. Example, here return only then 'name' field
+az group list --query "[].name"
+
+- Returning results in custom object format. Here 'resourceGroupName' is the key, 'name' is the value
+az group list --query "[].{resourceGroupName:name, location:location}"
+
+- Filtering based on location
+az group list --query "[?location=='eastasia'].name"
+
+- Formatting 
+az group list --output table/jsonc
+
+- Interactive
+az interactive
