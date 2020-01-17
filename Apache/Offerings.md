@@ -7,3 +7,5 @@
 - Apache Hive: Data warehouse sotware built on top of Apache Hadoop for data query and analysis. Called Interactive Query in Azure HDInsight.
 - Apache Kafka: Distributed streaming platform. Similar to Azure Event Hubs. Stores streaming data.
 - Apache Storm: Distributed real-time computation system. Process streams of data.
+- Apache Livy: Service that enables easy interaction with a Spark cluster over a REST interface. Used to submit Spark jobs
+- Apache Beeline: Hive client included in the head nodes of HDInsight cluster. Used to access remotely access clusters. Used to monitor jobs
