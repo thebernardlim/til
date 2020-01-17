@@ -43,9 +43,9 @@ To audit Azure SQL Database Managed Instance:
 ## CosmosDB
 
 ### SLAs
-Write - Single / Read - Single: 99.99%, 99.99%
-Write - Single / Read - Multi: 99.99%, 99.999%
-Write - Multi / Read - Multi: 99.999%, 99.999%
+Write - Single / Read - Single: 99.99%, 99.99% <br/>
+Write - Single / Read - Multi: 99.99%, 99.999% <br/>
+Write - Multi / Read - Multi: 99.999%, 99.999% <br/>
 
 ## Azure AD
 - Privileged Identity Management - JIT privileged access to resources / AD
@@ -55,11 +55,12 @@ Write - Multi / Read - Multi: 99.999%, 99.999%
 ## Azure SQL Data Warehouse
 
 ### Backup
-- Automatic Restore Points : No configuration required
+- Automatic Restore Points : No configuration required. 7 days retention period. RPO: 8 hours
 - User-Defined Restore Points: Manual trigger snapshots. Max 42 user-defined restore points. 7 day retention period. Can use Azure Portal to create.
 - When data warehouse deleted, final snapshot created which will be retained for 7 days only
 - Geo-Backups happen once per day to paired data center. RPO: 24 hours.
 - On restore, firewall rules need to be re-created.
+- Recommended file size : 256MB to 2GB
 
 
 ## Azure Databricks
@@ -76,7 +77,8 @@ Write - Multi / Read - Multi: 99.999%, 99.999%
     - Task preemption for fair usage for all users
     - Table Access Control - Restrict access to data to right people
 
-- Both clusteres can have credential passthrough - AD
+- Both clusters can have credential passthrough - AD
+- Cluster retention period : 30 days after termination
 
 ### Security
 - To access APIs, use access tokens
@@ -90,6 +92,8 @@ Rehydration options
 - Standard Priority: 15 hours 
 - High Priority: 1 hour
 
+Blob storage not supported by ZRS
+
 ## Azure Database
 ### Migration
 Azure Database Migration Service - Migrating with minimal disruptions. Source DB remains online.
@@ -97,16 +101,26 @@ Azure Database Migration Service - Migrating with minimal disruptions. Source DB
 ## Azure SQL 
 ### Service Tiers
 
-Basic, Standard, Premium
-Storage Size: 2 GB, 1 TB, 4 TB
-Max DTUs: / eDTUs per DB 5, 3000, 4000
-Max Backup Retention: 7 days, 35 days, 35 days
-IO Latency: 5ms(read) & 10ms(write), 2 ms(read/write)
+Basic, Standard, Premium <br/>
+Storage Size: 2 GB, 1 TB, 4 TB <br/>
+Max DTUs: / eDTUs per DB 5, 3000, 4000 <br/>
+Max Backup Retention: 7 days, 35 days, 35 days <br/>
+IO Latency: 5ms(read) & 10ms(write), 2 ms(read/write) <br/>
 
 ** In-memory OLTP only supported by Premium tier
 
+
 ### Backup
-- Long-term retention not available on Azure SQL DB Managed Instance
-- Up to 10 years
+- Long-term retention not available on Azure SQL DB Managed Instance - Up to 10 years
 - Geo-Redundant
+- Automated Backups - Up to 35 days only
+- When under TDE, offline files are still encrypted
+
+
+## Azure Functions
+
+## Plans
+Consumption - Scale Out automatically. Only pay when functions running. <br/>
+Premium - Require constant running of functions. Require more power. VNet Connectivity. <br/>
+Dedicated (App Service) Plan - When there are under-utilized VMs running in other App Service instances. Manual scaling.
 
