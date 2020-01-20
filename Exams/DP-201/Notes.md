@@ -55,9 +55,9 @@ To audit Azure SQL Database Managed Instance:
 
 ### SLAs
 
-Write - Single / Read - Single: 99.99%, 99.99% &nbsp;
-Write - Single / Read - Multi: 99.99%, 99.999% &nbsp;
-Write - Multi / Read - Multi: 99.999%, 99.999% &nbsp;
+Write - Single / Read - Single: 99.99%, 99.99% \
+Write - Single / Read - Multi: 99.99%, 99.999% \
+Write - Multi / Read - Multi: 99.999%, 99.999% \
 
 ## Azure AD
 
@@ -119,7 +119,7 @@ Write - Multi / Read - Multi: 99.999%, 99.999% &nbsp;
 
 ## Azure Storage
 
-Cool - At least 30 days. Milliseconds to retrieve. &nbsp;
+Cool - At least 30 days. Milliseconds to retrieve. \
 Archive - At least 180 days. Hours to retrieve.
 
 ### Rehydration options
@@ -127,9 +127,9 @@ Archive - At least 180 days. Hours to retrieve.
 - Standard Priority: 15 hours
 - High Priority: 1 hour
 
-Blob storage not supported by ZRS &nbsp;
-SAS does not support Azure Files &nbsp;
-Azure AD does not support Azure Files (REST), Azure Tables &nbsp;
+Blob storage not supported by ZRS \
+SAS does not support Azure Files \
+Azure AD does not support Azure Files (REST), Azure Tables \
 
 ### Accessing Storage
 
@@ -152,11 +152,6 @@ Azure AD does not support Azure Files (REST), Azure Tables &nbsp;
 
 Recommended file size: >256 MB
 
-Blob vs Data Lake
-
-
-
-
 ## Azure Database
 
 ### Migration
@@ -167,23 +162,23 @@ Azure Database Migration Service - Migrating with minimal disruptions. Source DB
 
 ### Service Tiers
 
-Basic, Standard, Premium &nbsp;
-Storage Size: 2 GB, 1 TB, 4 TB &nbsp;
-Max DTUs: / eDTUs per DB 5, 3000, 4000 &nbsp;
-Max Backup Retention: 7 days, 35 days, 35 days &nbsp;
-IO Latency: 5ms(read) & 10ms(write), 2 ms(read/write) &nbsp;
+Basic, Standard, Premium \
+Storage Size: 2 GB, 1 TB, 4 TB \
+Max DTUs: / eDTUs per DB 5, 3000, 4000 \
+Max Backup Retention: 7 days, 35 days, 35 days \
+IO Latency: 5ms(read) & 10ms(write), 2 ms(read/write) \
 
-** In-memory OLTP only supported by Premium tier &nbsp;
-** Premium tier integrates storage / compute resources & replicates together &nbsp;
+** In-memory OLTP only supported by Premium tier \
+** Premium tier integrates storage / compute resources & replicates together \
 ** Use contained users for AAD authentication to Azure SQL
-A contained database user based on an Azure AD identity, is a database user that does not have a login in the master database, and which maps to an identity in the Azure AD directory that is associated with the database. &nbsp;
-** Dynamic Scalability : Manually change resource limits, etc without downtime &nbsp;
+A contained database user based on an Azure AD identity, is a database user that does not have a login in the master database, and which maps to an identity in the Azure AD directory that is associated with the database. \
+** Dynamic Scalability : Manually change resource limits, etc without downtime \
 
 ### Auditing vs Diagnostics
 
 **Auditing:** Retain an audit trail of selected events. You can define categories of database actions to be audited.
 Report on database activity. You can use pre-configured reports and a dashboard to get started quickly with activity and event reporting.
-Analyze reports. You can find suspicious events, unusual activity, and trends. &nbsp;
+Analyze reports. You can find suspicious events, unusual activity, and trends. \
 
 **Diagnostics:** Performance monitoring. CPU percentage, usage etc
 
@@ -200,8 +195,8 @@ Analyze reports. You can find suspicious events, unusual activity, and trends. &
 ## Azure Functions
 
 ## Plans
-Consumption - Scale Out automatically. Only pay when functions running. &nbsp;
-Premium - Require constant running of functions. Require more power. VNet Connectivity. &nbsp;
+Consumption - Scale Out automatically. Only pay when functions running. \
+Premium - Require constant running of functions. Require more power. VNet Connectivity. \
 Dedicated (App Service) Plan - When there are under-utilized VMs running in other App Service instances. Manual scaling.
 
 
