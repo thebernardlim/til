@@ -76,6 +76,14 @@ Write - Multi / Read - Multi: 99.999%, 99.999% \
 - On restore, firewall rules need to be re-created.
 - Recommended file size : 256MB to 2GB
 
+### Optimization
+
+Choosing Distribution column:
+
+- Column where heavily used in JOINs
+- Has many unique values (Column should have at least 60 unique values)
+- Does not have NULLs, or only few NULLs
+- Not a DATE column
 
 ## Azure Databricks
 
@@ -135,6 +143,7 @@ Azure AD does not support Azure Files (REST), Azure Tables \
 
 - Account SAS: Access to multiple resources in 1 or more storage services
 - Service SAS: Access to specific storage account resource
+- User delegation SAS: Secured with Azure AD credentials. 
 - Primary/Secondary Storage: Full access to storage acct, including ability to modify/delete resources on it.
 
 *** If access key is regenerated, Account SAS, Service SAS and Shared Key will be impacted
@@ -200,6 +209,3 @@ Premium - Require constant running of functions. Require more power. VNet Connec
 Dedicated (App Service) Plan - When there are under-utilized VMs running in other App Service instances. Manual scaling.
 
 
-** Auditing vs Diagnostic
-
-** Distribution column : column where heavily used in JOINs
