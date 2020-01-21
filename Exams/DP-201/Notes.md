@@ -1,90 +1,5 @@
 # DP-201 Study Notes
 
-## Azure Managed Disk Types
-
-Used with Azure VMs
-
-- Ultra SSD
-  - Disk Size: 65,536 GiB
-  - Throughput: 2,000 MiB/s
-  - IOPS: 160,000
-- Premium SSD
-  - Disk Size: 32,767 GiB
-  - Throughput: 900 MiB/s
-  - IOPS: 20,000
-- Standard SSD
-  - Disk Size: 32,767 GiB
-  - Throughput: 750 MiB/s
-  - IOPS: 6,000
-- Standard HDD
-  - Disk Size: 32,767 GiB
-  - Throughput: 500 MiB/s
-  - IOPS: 2,000
-
-## SQL Server
-
-## Encryption
-
-- Always Encrypted: Encrypt sensitive data in client apps without revealing encryption keys to DB engine, providing separation between data owners and data managers.
-- Column-Level encryption - Uses function on erver. Data can be seen by DBA.
-
-### Backup
-
-- Full Backup
-- Differential Backup: Only backup what is different from previous full backup
-- Partial Backup : Only Primary Filegroup backed up
-- Transaction Logs : Holds all transactions 
-- Tail-end of transaction logs : Log records that have yet to be backed up
-
-## Azure SQL DB Managed Instance
-
-### Backup 
-
-No geo-replication for Azure SQL Database Managed Instance 
-
-### Auditing
-
-To audit Azure SQL Database Managed Instance:
-
-1) Create SAS
-2) T-SQL: Create Credetials where SECRET is SAS
-3) T-SQL: Create Server Audit
-
-
-## CosmosDB
-
-### SLAs
-
-Write - Single / Read - Single: 99.99%, 99.99% \
-Write - Single / Read - Multi: 99.99%, 99.999% \
-Write - Multi / Read - Multi: 99.999%, 99.999% \
-
-## Azure AD
-
-- Privileged Identity Management - JIT privileged access to resources / AD
-- Identity Protection - Automate detection / remediation of identity-based risks, investigate risks, export risk data to 3rd party utilities.
-
-
-## Azure SQL Data Warehouse
-
-### Backup
-
-- Automatic Restore Points : No configuration required. 7 days retention period. RPO: 8 hours
-- User-Defined Restore Points: Manual trigger snapshots. Max 42 user-defined restore points. 7 day retention period. Can use Azure Portal to create.
-- When data warehouse deleted, final snapshot created which will be retained for 7 days only
-- Geo-Backups happen once per day to paired data center. RPO: 24 hours.
-- On restore, firewall rules need to be re-created.
-- Recommended file size : 256MB to 2GB
-
-### Optimization
-
-Choosing Distribution column:
-
-- Column where heavily used in JOINs
-- Has many unique values (Column should have at least 60 unique values)
-- Does not have NULLs, or only few NULLs
-- Not a DATE column
-
 ## Azure Databricks
 
 ### Cluster Modes
@@ -161,6 +76,84 @@ Azure AD does not support Azure Files (REST), Azure Tables \
 
 Recommended file size: >256 MB
 
+
+## Azure Managed Disk Types
+
+Used with Azure VMs
+
+- Ultra SSD
+  - Disk Size: 65,536 GiB
+  - Throughput: 2,000 MiB/s
+  - IOPS: 160,000
+- Premium SSD
+  - Disk Size: 32,767 GiB
+  - Throughput: 900 MiB/s
+  - IOPS: 20,000
+- Standard SSD
+  - Disk Size: 32,767 GiB
+  - Throughput: 750 MiB/s
+  - IOPS: 6,000
+- Standard HDD
+  - Disk Size: 32,767 GiB
+  - Throughput: 500 MiB/s
+  - IOPS: 2,000
+
+
+## Azure AD
+
+- Privileged Identity Management - JIT privileged access to resources / AD
+- Identity Protection - Automate detection / remediation of identity-based risks, investigate risks, export risk data to 3rd party utilities.
+
+## SQL Server
+
+### Encryption
+
+- Always Encrypted: Encrypt sensitive data in client apps without revealing encryption keys to DB engine, providing separation between data owners and data managers.
+- Column-Level encryption - Uses function on server. Data can be seen by DBA.
+
+### Backup
+
+- Full Backup
+- Differential Backup: Only backup what is different from previous full backup
+- Partial Backup : Only Primary Filegroup backed up
+- Transaction Logs : Holds all transactions 
+- Tail-end of transaction logs : Log records that have yet to be backed up
+
+## Azure SQL DB Managed Instance
+
+### Backup 
+
+No geo-replication for Azure SQL Database Managed Instance 
+
+### Auditing
+
+To audit Azure SQL Database Managed Instance:
+
+1) Create SAS
+2) T-SQL: Create Credetials where SECRET is SAS
+3) T-SQL: Create Server Audit
+
+
+## Azure CosmosDB
+
+### SLAs
+
+Write - Single / Read - Single: 99.99%, 99.99% \
+Write - Single / Read - Multi: 99.99%, 99.999% \
+Write - Multi / Read - Multi: 99.999%, 99.999% \
+
+## Azure SQL Data Warehouse
+
+### Backup
+
+- Automatic Restore Points : No configuration required. 7 days retention period. RPO: 8 hours
+- User-Defined Restore Points: Manual trigger snapshots. Max 42 user-defined restore points. 7 day retention period. Can use Azure Portal to create.
+- When data warehouse deleted, final snapshot created which will be retained for 7 days only
+- Geo-Backups happen once per day to paired data center. RPO: 24 hours.
+- On restore, firewall rules need to be re-created.
+- Recommended file size : 256MB to 2GB
+
+
 ## Azure Database
 
 ### Migration
@@ -180,7 +173,8 @@ IO Latency: 5ms(read) & 10ms(write), 2 ms(read/write) \
 ** In-memory OLTP only supported by Premium tier \
 ** Premium tier integrates storage / compute resources & replicates together \
 ** Use contained users for AAD authentication to Azure SQL
-A contained database user based on an Azure AD identity, is a database user that does not have a login in the master database, and which maps to an identity in the Azure AD directory that is associated with the database. \
+A contained database user based on an Azure AD identity, is a database user that does not have a login in the master database, and which maps to an identity in the Azure AD directory that is associated with the database. Eg: To create contained user: `CREATE USER [bob@contoso.com] FROM EXTERNAL PROVIDER;` \
+Before creating contained user, need to set admin to AD User through UI Portal. \
 ** Dynamic Scalability : Manually change resource limits, etc without downtime \
 
 ### Auditing vs Diagnostics
@@ -203,9 +197,30 @@ Analyze reports. You can find suspicious events, unusual activity, and trends. \
 
 ## Azure Functions
 
-## Plans
+### Plans
 Consumption - Scale Out automatically. Only pay when functions running. \
 Premium - Require constant running of functions. Require more power. VNet Connectivity. \
 Dedicated (App Service) Plan - When there are under-utilized VMs running in other App Service instances. Manual scaling.
 
+## Database Optimization
+
+Choosing Distribution column:\
+https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute
+
+- Column where heavily used in JOINs
+- Not in WHERE clause
+- Not a DATE column
+- Has many unique values (Column should have at least 60 unique values)
+- Does not have NULLs, or only few NULLs
+
+Choosing Partition key: \
+https://docs.microsoft.com/en-us/azure/cosmos-db/partitioning-overview
+
+- Choose a partition key that has a wide range of values and access patterns that are evenly spread across logical partitions.
+- Choose a partition key that spreads the workload evenly across all partitions and evenly over time.
+- Candidates for partition keys might include properties that appear frequently as a filter in your queries.
+
+
+Use non-clustered indexes to improve analytics performance
+https://docs.microsoft.com/en-us/azure/sql-database/sql-database-in-memory
 
