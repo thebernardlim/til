@@ -34,11 +34,9 @@
 - Conditional Access
 - Data Lake Storage Credential Passthrough - Use AD Identity used in Databricks for Data Lake
 
-
 ### Security
 
 - To access APIs, use access tokens
-
 
 ## Azure Storage
 
@@ -50,7 +48,7 @@ Archive - At least 180 days. Hours to retrieve.
 - Standard Priority: 15 hours
 - High Priority: 1 hour
 
-Blob storage not supported by ZRS \
+Blob storage not supported by ZRS or GZRS \
 SAS does not support Azure Files \
 Azure AD does not support Azure Files (REST), Azure Tables \
 
@@ -169,6 +167,11 @@ Storage Size: 2 GB, 1 TB, 4 TB \
 Max DTUs: / eDTUs per DB 5, 3000, 4000 \
 Max Backup Retention: 7 days, 35 days, 35 days \
 IO Latency: 5ms(read) & 10ms(write), 2 ms(read/write) \
+
+Basic, Standard, General - Compute/Storage resources separated
+Premium, Business Critical - Compute/Storage integrated
+
+Hyperscale - DB Size up to 100 TB. Use when DB size > 4 TB
 
 ** In-memory OLTP only supported by Premium tier \
 ** Premium tier integrates storage / compute resources & replicates together \
